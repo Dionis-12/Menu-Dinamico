@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="image/icon.ico">
+    <title> Menú de Navegación Dinámico </title>
+    <style>
+    
+    * {
+	  	box-sizing: border-box;
+	    margin: 0;
+	    padding: 0;
+	}
+
+	html, body {
+		font-family: 'Roboto Condensed', sans-serif;
+		height: 100%;
+		overflow: hidden;
+		text-align: justify;
+	}
+
+	.page {
+		background-color: #584e4a;
+		height: 100%;
+	}
+
+	.content {
+		background-color: #f0f0f0;
+		height: 200%;
+		transform-origin: top left;
+		transition: transform 0.7s cubic-bezier(1, 0.005, 0.24, 1);
+	}
+
+	.content_inner {
+		height: 50%;
+		overflow-y: auto;
+		padding: 50px 20%;
+	}
+
+/* basically all styling from now on */
+	.menu_toggle {
+		background-color: #f37272;
+		border-bottom-right-radius: 100%;
+		cursor: pointer;
+		display: block;
+		height: 80px;
+		left: 0;
+		position: fixed;
+		top: 0;
+		width: 100px;
+		z-index: 900;
+	}
+
+	.menu_toggle:active i {
+		opacity: 0.8;
+	}
+
+	.menu_toggle i {
+		color: #f0f0f0;
+	}
+
+	.menu_toggle .menu_open, .menu_toggle .menu_close {
+		left: 50%;
+		margin-top: -15px;
+		margin-left: -12px;
+		position: absolute;
+		transition: transform 0.7s cubic-bezier(1, 0.005, 0.24, 1);
+		top: 50%;
+	}
+
+	.menu_toggle .menu_open {
+		transform-origin: -100px -100px;
+	}
+
+	.menu_toggle .menu_close {
+		transform: rotate(20deg);
+		transform-origin: -100px -160px;
+	}
+
+	.menu_items {
+		bottom: 0;
+		left: 50px;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		position: fixed;
+	}
+
+	.menu_items li {
+		height: 60px;
+		margin-bottom: 30px;
+		transform: translateX(-300px);
+		transition: transform 0.7s 0s cubic-bezier(1, 0.005, 0.24, 1);
+	}
+
+	.menu_items li:nth-child(2) {
+		margin-left: 40px;
+	}
+
+	.menu_items li:nth-child(3) {
+		margin-left: 80px;
+	}
+
+	.menu_items a {
+		color: #a4a4a4;
+		display: block;
+		letter-spacing: 2px;
+		text-decoration: none;
+		text-transform: uppercase;
+		transition: color 0.2s;
+	}
+
+	.menu_items a .icon {
+		color: #f0f0f0;
+		display: inline-block;
+		margin-right: 25px;
+		position: relative;
+	}
+
+	.menu_items a .icon:after {
+		border: 2px solid #f0f0f0;
+		border-radius: 100%;
+		content: '';
+		display: block;
+		height: 60px;
+		left: 50%;
+		margin-left: -33px;
+		margin-top: -32px;
+		position: absolute;
+		transition: border-color 0.2s;
+		top: 50%;
+		width: 60px;
+	}
+
+	.menu_items a:hover {
+		color: #f0f0f0;
+	}
+
+	.menu_items a:hover .icon:after {
+		border-color: #f37272;
+	}
+
+	.menu_items a:active .icon {
+		color: #f37272;
+	}
+
+/* Let's open up the menu */
+	.shazam {
+	  /*.content_inner {
+	   height: 100%;
+	   }*/
+	}
+
+	.shazam .content {
+		transform: rotate(-40deg);
+	}
+
+	.shazam .menu_open {
+		transform: rotate(-20deg);
+	}
+
+	.shazam .menu_close {
+		transform: rotate(0);
+	}
+
+	.shazam .menu_items li {
+		transform: translateX(0);
+		transition: transform 0.35s 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+
+	.shazam .menu_items li:nth-child(2) {
+		transition-delay: 0.47s;
+	}
+
+	.shazam .menu_items li:nth-child(3) {
+		transition-delay: 0.48s;
+	}
+
+	h1 {
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 15px;
+	}
+
+	body {
+		color: #584e4a;
+	}
+
+    .social i {
+    	background-color: #f37272;
+    	border-radius: 50px;
+    	color: white;
+        font-size: 20px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        width: 40px;
+    }
+    
+    </style>
+</head>
+
+<body>
+	<div class="page">
+		<span class="menu_toggle">
+			<i class="menu_open fa fa-bars fa-lg"></i>
+			<i class="menu_close fa fa-times fa-lg"></i>
+		</span>
+
+		<ul class="menu_items">
+			<li>
+				<a href="#"><i class="icon fa fa-home fa-2x"></i><b> Moar </b></a>
+			</li>
+			<li>
+				<a href="#"><i class="icon fa fa-phone fa-2x"></i><b> Coffee </b></a>
+			</li>
+			<li>
+				<a href="#"><i class="icon fa fa-heart fa-2x"></i><b> Please </b></a>
+			</li>
+		</ul>
+
+	<main class="content">
+		<div class="content_inner">
+			<h1> Amazing Design Exclusively </h1>
+			<br><br><br>
+
+		<div class="social">
+			<i class="fa fa-facebook"></i>
+			<i class="fa fa-twitter"></i>
+			<i class="fa fa-linkedin"></i>
+			<i class="fa fa-behance"></i>
+			<i class="fa fa-youtube"></i>
+		</div>
+		<br><br>
+
+		<p> Do <strong> not </strong> push that big, red button in the corner. People will die.
+			You have been warned. Do&hellip; not do it.
+		</p>
+		<br>
+
+		<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolorem, ducimus
+			laudantium, earum eos natus sint voluptatum dolores fuga quibusdam consectetur dicta.
+			Laudantium enim inventore iusto ducimus est velit aperiam tempora quibusdam id dolore
+			natus perferendis, debitis distinctio optio repellendus, repellat molestias delectus
+			harum eius, reiciendis dicta ipsum architecto! Eligendi expedita in beatae, placeat
+			unde voluptatibus voluptates consectetur explicabo laudantium, officiis ad nihil.
+			Beatae similique voluptate sequi voluptatem delectus iure in omnis, fuga ipsam nulla
+			ipsum architecto, iste debitis nisi labore quisquam odio accusantium corporis sint
+			perspiciatis. Excepturi earum nobis soluta, doloremque nihil dolorum illum quaerat
+			magnam nemo non sed!
+		</p>
+		<br>
+
+		<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolorem, ducimus
+			laudantium, earum eos natus sint voluptatum dolores fuga quibusdam consectetur dicta.
+			Laudantium enim inventore iusto ducimus est velit aperiam tempora quibusdam id dolore
+			natus perferendis, debitis distinctio optio repellendus, repellat molestias delectus
+			harum eius, reiciendis dicta ipsum architecto! Eligendi expedita in beatae, placeat
+			unde voluptatibus voluptates consectetur explicabo laudantium, officiis ad nihil.
+			Beatae similique voluptate sequi voluptatem delectus iure in omnis, fuga ipsam nulla
+			ipsum architecto, iste debitis nisi labore quisquam odio accusantium corporis sint
+			perspiciatis. Excepturi earum nobis soluta, doloremque nihil dolorum illum quaerat
+			magnam nemo non sed!
+		</p>
+		<br>
+
+		<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolorem, ducimus
+			laudantium, earum eos natus sint voluptatum dolores fuga quibusdam consectetur dicta.
+			Laudantium enim inventore iusto ducimus est velit aperiam tempora quibusdam id dolore
+			natus perferendis, debitis distinctio optio repellendus, repellat molestias delectus
+			harum eius, reiciendis dicta ipsum architecto! Eligendi expedita in beatae, placeat
+			unde voluptatibus voluptates consectetur explicabo laudantium, officiis ad nihil.
+			Beatae similique voluptate sequi voluptatem delectus iure in omnis, fuga ipsam nulla
+			ipsum architecto, iste debitis nisi labore quisquam odio accusantium corporis sint
+			perspiciatis. Excepturi earum nobis soluta, doloremque nihil dolorum illum quaerat
+			magnam nemo non sed!
+		</p>
+		</div>
+	</main>
+	</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script>
+	// elements
+	var $page = $('.page');
+
+	$('.menu_toggle').on('click', function(){
+	  $page.toggleClass('shazam');
+	});
+	$('.content').on('click', function(){
+	  $page.removeClass('shazam');
+	});
+	    
+	</script>
+ </body>
+</html>
